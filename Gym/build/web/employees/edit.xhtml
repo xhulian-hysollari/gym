@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>   
+        <title>Edit Employee</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body style="background-image: url(http://www.mononews.gr/wp-content/uploads/2018/05/Gyms-in-Mohali-e1514278896851.jpg); background-repeat: no-repeat; background-size: cover">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <h:form>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span> <span
+                                class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                class="icon-bar"></span>
+                        </button>
+                        <a href="/Gym/faces/main.xhtml"><img style="padding: 0" class="navbar-brand" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyM5gmGUvvJXLYwll6QIVIgsCFoqNmL6b884jncfqbV5jOoGUtfQ"/></a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Gym/faces/main.xhtml">Home</a></li>
+                            <li><a href="/Gym/faces/employees/index.xhtml">Employees</a></li>
+                            <li><a href="/Gym/faces/subscriptions/index.xhtml">Subscriptions</a></li>
+                            <li> 
+                                <h:commandLink value="Logout" action="#{AuthenticationBean.logout}">
+                                </h:commandLink>    
+                            </li>
+                        </ul>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 70px;">
+            <div class="panel">
+                <div class="panel-heading" style="font-style: oblique; background-color: #0d2956; text-align: center; font-size: 20px; color: #c3c329"><h1>Edit Employee "#{Employees.first_name} #{Employees.last_name}"</h1></div>
+                <div class="panel-body" style="color: #d0d06c; background-color: #164796">
+                    <f:view>
+                        <h:form>
+                            <h:panelGrid class="table" columns="2">
+                                
+
+                                <h:outputLabel value="Username" />
+                                <h:inputText class="form-control" value="#{Employees.username}" required="true" requiredMessage="Username must not be empty.">
+                                    <h:message for="Username" />
+                                </h:inputText>
+
+                                <h:outputLabel value="First Name" />
+                                <h:inputText class="form-control" value="#{Employees.first_name}" required="true" requiredMessage="First Name must not be empty.">
+                                    <h:message for="First Name" />
+                                </h:inputText>
+
+                                <h:outputLabel value="Last Name" />
+                                <h:inputText class="form-control" value="#{Employees.last_name}" required="true" requiredMessage="Last Name must not be empty.">
+                                    <h:message for="Last Name" />
+                                </h:inputText>
+
+                                <h:outputLabel value="Role" />
+                                <h:inputText disabled="true" class="form-control" value="#{Employees.role}">
+                                    <h:message for="Role" />
+                                </h:inputText>
+                              
+                                <h:link class="btn btn-warning"  outcome="index?faces-redirect=true" value="Return to all Employees"/>  
+
+                                <h:commandLink class="btn btn-success" value="Update Employee" action="index?faces-redirect=true" actionListener="#{Employees.update()}" >
+                                    <f:param name="user_id" value="#{Employees.user_id}"/>
+                                </h:commandLink>
+
+                            </h:panelGrid>
+
+                        </h:form> 
+                    </f:view>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
